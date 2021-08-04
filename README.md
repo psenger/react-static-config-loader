@@ -23,34 +23,72 @@
       - [Examples](#examples-1)
   * [Contributing](#contributing)
     + [Rules](#rules)
+  * [Deployment Steps](#deployment-steps)
   * [License](#license)
 
 <!--END_SECTION:toc-->
 
+<!--START_SECTION:file:INSTALL.md-->
 ## Install
 
-```bash
-npm install --save react-static-config-loader
+This project, hosted alternatively in GitHub, not NPM, requires you append the following to a project level file `./.npmrc`
+
 ```
+@psenger:registry=https://npm.pkg.github.com
+```
+
+Once completed, you can then execute either `npm` or `yarn` to install.
+
+```bash
+npm install @psenger/react-static-config-loader --save
+```
+
+<!--END_SECTION:file:INSTALL.md-->
 
 <!--START_SECTION:file:TUTORIAL.md-->
 ## Usage
 
-```javascript
-const x = 100;
-```
+In the simplest example, we want to fetch a config json from the server and send the `config`
+into the context. The function `fn` is passed to the `loader` prop.
+
+While loading, any JSX passed to `loadingMsg` will be called.
 
 ```jsx
-import React, { Component } from 'react'
 
-import MyComponent from 'react-static-config-loader'
-import 'react-static-config-loader/dist/index.css'
+import React from 'react';
+import { StaticConfigWrapper, Context } from 'react-static-config-loader';
 
-class Example extends Component {
+export class ExampleClass extends React.Component {
+  static contextType = Context;
   render() {
-    return <MyComponent />
+    const {someValue} = this.props;
+    const config = this.context;
+    return <React.Fragment>
+      <code>{JSON.stringify(config,null,4)}</code>
+      <div>{someValue}</div>
+    </React.Fragment>
   }
 }
+
+const later = async function later(delay, fnLater) {
+  return new Promise(function(resolve) {
+    setTimeout(resolve, delay);
+  }).then(fnLater);
+}
+
+const App = () => {
+  const fn = ()=> Promise.resolve({msg:'go',version:1234,selection:['no','yes'], buttonName:'go go button'})
+  return (
+    <React.Fragment>
+      <StaticConfigWrapper loader={async () => later(2000, fn)}>
+        <ExampleClass someValue={'You made it in ExampleClass'}/>
+      </StaticConfigWrapper>
+    </React.Fragment>
+  )
+}
+
+export default App
+
 ```
 
 <!--END_SECTION:file:TUTORIAL.md-->
@@ -169,7 +207,7 @@ import React from 'react';
     </React.Fragment>
   }
  }
- const later = function later(delay, fnLater) {
+ const later = async function later(delay, fnLater) {
   return new Promise(function(resolve) {
     setTimeout(resolve, delay);
   }).then(fnLater);
@@ -231,6 +269,15 @@ react-static-config-loader fruitful.
 
 
 <!--END_SECTION:file:CONTRIBUTING.md-->
+
+## Deployment Steps
+
+* create a pull request from `dev` to `main`
+* check out `main`
+* `npm version patch -m "message here" or minor`
+* `npm publish`
+* Then switch to `dev` branch
+* And then merge `main` into `dev` and push `dev` to origin
 
 ## License
 
