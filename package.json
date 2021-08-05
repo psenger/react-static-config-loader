@@ -30,7 +30,7 @@
     "docs:html": "documentation build src -f html --github -o docs",
     "precommit": "npm test:lint && npm test",
     "preversion": "npm test",
-    "version": "npm run build && git add -A dist && auto-changelog -p && git add CHANGELOG.md",
+    "version": "npm run build && git add -A dist",
     "postversion": "git push && git push --tags && rm -rf build/temp",
     "test": "run-s test:unit test:lint test:build",
     "test:build": "run-s build",
