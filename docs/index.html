@@ -1,0 +1,648 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset='utf-8'>
+  <title>@psenger/react-static-config-loader 1.0.0 | Documentation</title>
+  <meta name='description' content='React Static Config Loader, a convenience tag providing a widely used pattern of loading a static configuration from a server and using ReactJS Context, providing the cofnig to the context of components within the hiearchy in a clean and consistent manner.'>
+  <meta name='viewport' content='width=device-width,initial-scale=1'>
+  <link href='assets/bass.css' rel='stylesheet'>
+  <link href='assets/style.css' rel='stylesheet'>
+  <link href='assets/github.css' rel='stylesheet'>
+  <link href='assets/split.css' rel='stylesheet'>
+</head>
+<body class='documentation m0'>
+    <div class='flex'>
+      <div id='split-left' class='overflow-auto fs0 height-viewport-100'>
+        <div class='py1 px2'>
+          <h3 class='mb0 no-anchor'>@psenger/react-static-config-loader</h3>
+          <div class='mb1'><code>1.0.0</code></div>
+          <input
+            placeholder='Filter'
+            id='filter-input'
+            class='col12 block input'
+            spellcheck='false'
+            autocapitalize='off'
+            autocorrect='off'
+            type='text' />
+          <div id='toc'>
+            <ul class='list-reset h5 py1-ul'>
+              
+                
+                <li><a
+                  href='#context'
+                  class="">
+                  Context
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#provider'
+                  class="">
+                  Provider
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#consumer'
+                  class="">
+                  Consumer
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#configpropextenderhoc'
+                  class="">
+                  ConfigPropExtenderHoc
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#loadercall'
+                  class="">
+                  loaderCall
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#staticconfigwrapper'
+                  class="">
+                  StaticConfigWrapper
+                  
+                </a>
+                
+                </li>
+              
+            </ul>
+          </div>
+          <div class='mt1 h6 quiet'>
+            <a href='https://documentation.js.org/reading-documentation.html'>Need help reading this?</a>
+          </div>
+        </div>
+      </div>
+      <div id='split-right' class='relative overflow-auto height-viewport-100'>
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='context'>
+      Context
+    </h3>
+    
+    
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/psenger/react-static-config-loader/blob/4b1ae500b3fbeff543a305b6ddf63315a820efb7/src/index.js#L8-L8'>
+      <span>src/index.js</span>
+      </a>
+    
+  </div>
+  
+
+  <p>Context</p>
+
+    <div class='pre p1 fill-light mt0'>Context</div>
+  
+    <p>
+      Type:
+      React.Context&#x3C;any>
+    </p>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Related</div>
+    
+      
+        <a href="https://reactjs.org/docs/context.html">https://reactjs.org/docs/context.html</a>
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='provider'>
+      Provider
+    </h3>
+    
+    
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/psenger/react-static-config-loader/blob/4b1ae500b3fbeff543a305b6ddf63315a820efb7/src/index.js#L15-L15'>
+      <span>src/index.js</span>
+      </a>
+    
+  </div>
+  
+
+  <p>Provider</p>
+
+    <div class='pre p1 fill-light mt0'>Provider</div>
+  
+    <p>
+      Type:
+      Context.Provider&#x3C;any>
+    </p>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Related</div>
+    
+      
+        <a href="https://reactjs.org/docs/context.html#contextconsumer">https://reactjs.org/docs/context.html#contextconsumer</a>
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='consumer'>
+      Consumer
+    </h3>
+    
+    
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/psenger/react-static-config-loader/blob/4b1ae500b3fbeff543a305b6ddf63315a820efb7/src/index.js#L22-L22'>
+      <span>src/index.js</span>
+      </a>
+    
+  </div>
+  
+
+  <p>Consumer</p>
+
+    <div class='pre p1 fill-light mt0'>Consumer</div>
+  
+    <p>
+      Type:
+      Context.Provider&#x3C;any>
+    </p>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Related</div>
+    
+      
+        <a href="https://reactjs.org/docs/context.html#contextprovider">https://reactjs.org/docs/context.html#contextprovider</a>
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='configpropextenderhoc'>
+      ConfigPropExtenderHoc
+    </h3>
+    
+    
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/psenger/react-static-config-loader/blob/4b1ae500b3fbeff543a305b6ddf63315a820efb7/src/index.js#L61-L66'>
+      <span>src/index.js</span>
+      </a>
+    
+  </div>
+  
+
+  <p>Use this Wrapper or HOC, Higher Order Component, to copy the <code>config</code> object found in context
+onto the properties of the first level of children it encapsulates. Because <code>contextType</code> can
+not be added to JSX functions, you will need to wrap or extend the function to inject the
+config value. This HOC, simple clones the JSX element, and copies the context's 'config'
+values as properties.</p>
+
+    <div class='pre p1 fill-light mt0'>new ConfigPropExtenderHoc(children: JSX?): JSX</div>
+  
+  
+    <p>
+      Extends
+      
+        React.Component
+      
+    </p>
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>children</span> <code class='quiet'>(JSX?)</code>
+	    Optional JSX Children, keep in mind this only attaches the property
+to all the first level children ( shallow )
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code>JSX</code>:
+        
+      
+    
+  
+
+  
+
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Example</div>
+    
+      
+      <pre class='p1 overflow-auto round fill-light'><span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;react&#x27;</span>
+<span class="hljs-keyword">import</span> { ConfigPropExtenderHoc } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;react-static-config-loader&#x27;</span>
+
+<span class="hljs-keyword">const</span> ExampleFunctionalDiv = <span class="hljs-function">(<span class="hljs-params">{ config, someValue }</span>) =&gt;</span> <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">React.Fragment</span>&gt;</span>
+ <span class="hljs-tag">&lt;<span class="hljs-name">code</span>&gt;</span>{JSON.stringify(config, null, 4)}<span class="hljs-tag">&lt;/<span class="hljs-name">code</span>&gt;</span>
+ <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>{someValue}<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+ <span class="hljs-tag">&lt;/<span class="hljs-name">React.Fragment</span>&gt;</span></span>
+
+<span class="hljs-keyword">const</span> HOCExampleFunctionalDiv = <span class="hljs-function">(<span class="hljs-params">props</span>) =&gt;</span> {
+  <span class="hljs-keyword">return</span> (
+    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">React.Fragment</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">ConfigPropExtenderHoc</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">ExampleFunctionalDiv</span> {<span class="hljs-attr">...props</span>} /&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">ConfigPropExtenderHoc</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">React.Fragment</span>&gt;</span></span>
+  );
+}
+
+ <span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> HOCExampleFunctionalDiv</pre>
+    
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='loadercall'>
+      loaderCall
+    </h3>
+    
+    
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/psenger/react-static-config-loader/blob/4b1ae500b3fbeff543a305b6ddf63315a820efb7/src/index.js#L68-L74'>
+      <span>src/index.js</span>
+      </a>
+    
+  </div>
+  
+
+  <p>Callback responsible for fetching the external configuration. Because it is a promise, the
+user can add a 'then' or even use async/await to transform the payload.</p>
+
+    <div class='pre p1 fill-light mt0'>loaderCall(): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>&#x3C;any></div>
+  
+    <p>
+      Type:
+      <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function">Function</a>
+    </p>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>&#x3C;any></code>:
+        
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='staticconfigwrapper'>
+      StaticConfigWrapper
+    </h3>
+    
+    
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/psenger/react-static-config-loader/blob/4b1ae500b3fbeff543a305b6ddf63315a820efb7/src/index.js#L123-L143'>
+      <span>src/index.js</span>
+      </a>
+    
+  </div>
+  
+
+  <p>StaticConfigWrapper - is everything wrapped up in one JSX tag. I
+expect this will satisfy the majority of scenarios. However, for those that
+it does not, the <a href="#Provider">Provider</a>, <a href="#Consumer">Consumer</a>, and <a href="#Context">Context</a> are all broken out. If you
+find you really need them, this might not be a good solution for your project.
+<a href="http://redux.js.org/docs/basics/Actions.html">redux Action object</a></p>
+
+    <div class='pre p1 fill-light mt0'>StaticConfigWrapper</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>props</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>?)</code>
+	    props the JSX props.
+
+          </div>
+          
+          <table class='mt1 mb2 fixed-table h5 col-12'>
+            <colgroup>
+              <col width='30%' />
+              <col width='70%' />
+            </colgroup>
+            <thead>
+              <tr class='bold fill-light'>
+                <th>Name</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody class='mt1'>
+              
+                <tr>
+  <td class='break-word'><span class='code bold'>props.children</span> <code class='quiet'>JSX.Element</code>
+  
+    (default <code>null</code>)
+  </td>
+  <td class='break-word'><span>All the JSX children, or null. the default value
+is null.
+</span></td>
+</tr>
+
+
+              
+                <tr>
+  <td class='break-word'><span class='code bold'>props.loader</span> <code class='quiet'><a href="#loadercall">loaderCall</a></code>
+  </td>
+  <td class='break-word'><span>Required function that will "load" the static
+configuration, it is
+assumed the call will return a Promise, that can include a value of rejection.
+</span></td>
+</tr>
+
+
+              
+                <tr>
+  <td class='break-word'><span class='code bold'>props.loadingMsg</span> <code class='quiet'>JSX.Element</code>
+  
+    (default <code>null</code>)
+  </td>
+  <td class='break-word'><span>The optional JSX that will be displayed while the
+loader is running.
+</span></td>
+</tr>
+
+
+              
+            </tbody>
+          </table>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code>JSX.Element</code>:
+        
+      
+    
+  
+
+  
+
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Example</div>
+    
+      
+      <pre class='p1 overflow-auto round fill-light'><span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;react&#x27;</span>;
+ <span class="hljs-keyword">import</span> { StaticConfigWrapper, Context } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;react-static-config-loader&#x27;</span>;
+ <span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ExampleClass</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">React</span>.<span class="hljs-title">Component</span> </span>{
+  <span class="hljs-keyword">static</span> contextType = Context;
+  <span class="hljs-function"><span class="hljs-title">render</span>(<span class="hljs-params"></span>)</span> {
+    <span class="hljs-keyword">const</span> {someValue} = <span class="hljs-built_in">this</span>.props;
+    <span class="hljs-keyword">const</span> config = <span class="hljs-built_in">this</span>.context;
+    <span class="hljs-keyword">return</span> <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">React.Fragment</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">code</span>&gt;</span>{JSON.stringify(config,null,4)}<span class="hljs-tag">&lt;/<span class="hljs-name">code</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>{someValue}<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">React.Fragment</span>&gt;</span></span>
+  }
+ }
+ <span class="hljs-keyword">const</span> later = <span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">later</span>(<span class="hljs-params">delay, fnLater</span>) </span>{
+  <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">resolve</span>) </span>{
+    <span class="hljs-built_in">setTimeout</span>(resolve, delay);
+  }).then(fnLater);
+ }
+ <span class="hljs-keyword">const</span> App = <span class="hljs-function">() =&gt;</span> {
+  <span class="hljs-keyword">const</span> fn = <span class="hljs-function">()=&gt;</span> <span class="hljs-built_in">Promise</span>.resolve({<span class="hljs-attr">msg</span>:<span class="hljs-string">&#x27;go&#x27;</span>,<span class="hljs-attr">version</span>:<span class="hljs-number">1234</span>,<span class="hljs-attr">selection</span>:[<span class="hljs-string">&#x27;no&#x27;</span>,<span class="hljs-string">&#x27;yes&#x27;</span>], <span class="hljs-attr">buttonName</span>:<span class="hljs-string">&#x27;go go button&#x27;</span>})
+  <span class="hljs-keyword">return</span> (
+    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">React.Fragment</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">StaticConfigWrapper</span> <span class="hljs-attr">loader</span>=<span class="hljs-string">{async</span> () =&gt;</span> later(2000, fn)}&gt;
+        <span class="hljs-tag">&lt;<span class="hljs-name">ExampleClass</span> <span class="hljs-attr">someValue</span>=<span class="hljs-string">{</span>&#x27;<span class="hljs-attr">You</span> <span class="hljs-attr">made</span> <span class="hljs-attr">it</span> <span class="hljs-attr">in</span> <span class="hljs-attr">ExampleClass</span>&#x27;}/&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">StaticConfigWrapper</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">React.Fragment</span>&gt;</span></span>
+  )
+ }
+ <span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> App</pre>
+    
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+      </div>
+    </div>
+  <script src='assets/anchor.js'></script>
+  <script src='assets/split.js'></script>
+  <script src='assets/site.js'></script>
+</body>
+</html>
