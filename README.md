@@ -1,8 +1,17 @@
 # react-static-config-loader
 
-> React Static Config Loader, a convenience tag providing a widely used pattern of loading a static configuration from a server and using ReactJS Context, providing the cofnig to the context of components within the hiearchy in a clean and consistent manner.
+> React Static Config Loader, a convenience component providing a widely used pattern of loading a
+> static configuration from a server and injecting the configuration into the ReactJS Context,
+> providing the config within the hierarchy in a clean and consistent manner.
 
-[![NPM](https://img.shields.io/npm/v/react-static-config-loader.svg)](https://www.npmjs.com/package/react-static-config-loader) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+Ideally, the best possible solution would be to bundle a configuration with the build. However,
+for many, this is not practical.
+
+The react-static-config-loader component, utilizes ReactJS Context, and injects a value ( a
+configuration ) into React Classes. Unfortunately ( as of React 16 ) is incapable of inject it into
+JSX functions ( which make sense as JSX are intended to be "Pure" ). This component does provide
+prebuilt object that can overcome this by creating HOC's and injecting the context values into the
+props.
 
 <!--START_SECTION:toc-->
 
@@ -48,10 +57,11 @@ npm install @psenger/react-static-config-loader --save
 <!--START_SECTION:file:TUTORIAL.md-->
 ## Usage
 
-In the simplest example, we want to fetch a config json from the server and send the `config`
-into the context. The function `fn` is passed to the `loader` prop.
+In the simplest example, we want to fetch a configuration json file from the server and send the
+`config` into the context. The async function ( `fn` in this example ) is passed as a proprty
+called `loader`.
 
-While loading, any JSX passed to `loadingMsg` will be called.
+While loading ( and defaulted behavior ), any JSX passed to `loadingMsg` will be called.
 
 ```jsx
 
@@ -88,7 +98,48 @@ const App = () => {
 }
 
 export default App
+```
 
+Things get a little complicated if you have "Pure" JSX functions. In this case, the
+`contextType` is simply not available. You can bypass this by creating a Higher Order Component (HOC)
+and pass the value down via the properties or use the built in `ConfigPropExtenderHoc` which
+extends the component and copies the `config` into the component as properties.
+
+```jsx
+import React from 'react';
+import { ConfigPropExtenderHoc, StaticConfigWrapper } from '@psenger/react-static-config-loader';
+
+const PureFunction = ({ config, someValue }) => <React.Fragment>
+  <code>{JSON.stringify(config, null, 4)}</code>
+  <div>{someValue}</div>
+</React.Fragment>
+
+const HOC = ({someValue}) => {
+  return (
+    <ConfigPropExtenderHoc>
+      <PureFunction someValue={someValue} />
+    </ConfigPropExtenderHoc>
+  );
+}
+
+const later = async function later(delay, fnLater) {
+  return new Promise(function(resolve) {
+    setTimeout(resolve, delay);
+  }).then(fnLater);
+}
+
+const App = () => {
+  const fn = ()=> Promise.resolve({msg:'go',version:1234,selection:['no','yes'], buttonName:'go go button'})
+  return (
+    <React.Fragment>
+      <StaticConfigWrapper loader={async () => later(2000, fn)} loadingMsg={<div>Loading</div>}>
+        <HOC someValue={'You made it in ExampleClass'}/>
+      </StaticConfigWrapper>
+    </React.Fragment>
+  )
+}
+
+export default App
 ```
 
 <!--END_SECTION:file:TUTORIAL.md-->
