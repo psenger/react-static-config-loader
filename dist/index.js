@@ -25,19 +25,6 @@ const _iteratorSymbol = /*#__PURE__*/ typeof Symbol !== "undefined" ? (Symbol.it
 
 const _asyncIteratorSymbol = /*#__PURE__*/ typeof Symbol !== "undefined" ? (Symbol.asyncIterator || (Symbol.asyncIterator = Symbol("Symbol.asyncIterator"))) : "@@asyncIterator";
 
-// Asynchronously call a function and send errors to recovery continuation
-function _catch(body, recover) {
-	try {
-		var result = body();
-	} catch(e) {
-		return recover(e);
-	}
-	if (result && result.then) {
-		return result.then(void 0, recover);
-	}
-	return result;
-}
-
 // Asynchronously await a promise and pass the result to a finally continuation
 function _finallyRethrows(body, finalizer) {
 	try {
@@ -57,7 +44,15 @@ var Consumer = Context.Consumer;
 
 var useComponentDidMount = function useComponentDidMount(onMountHandler) {
   React.useEffect(function () {
-    onMountHandler();
+    var asyncOnMountHandler = function asyncOnMountHandler() {
+      try {
+        return Promise.resolve(onMountHandler()).then(function () {});
+      } catch (e) {
+        return Promise.reject(e);
+      }
+    };
+
+    asyncOnMountHandler();
   }, []);
 };
 
@@ -95,12 +90,10 @@ var StaticConfigWrapper = function StaticConfigWrapper(_ref) {
   useComponentDidMount(function () {
     try {
       var _temp2 = _finallyRethrows(function () {
-        return _catch(function () {
-          setIsLoading(true);
-          return Promise.resolve(loader()).then(function (data) {
-            setConfig(data);
-          });
-        }, function () {});
+        setIsLoading(true);
+        return Promise.resolve(loader()).then(function (data) {
+          setConfig(data);
+        });
       }, function (_wasThrown, _result) {
         setIsLoading(false);
         if (_wasThrown) throw _result;
