@@ -1,6 +1,6 @@
 {
   "name": "@psenger/react-static-config-loader",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "React Static Config Loader, a convenience tag providing a widely used pattern of loading a static configuration from a server and using ReactJS Context, providing the cofnig to the context of components within the hiearchy in a clean and consistent manner.",
   "author": "Philip A Senger <philip.a.senger@cngrgroup.com>",
   "license": "MIT",
@@ -10,6 +10,9 @@
   },
   "bugs": {
     "url": "https://github.com/psenger/react-static-config-loader/issues"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
   },
   "homepage": "https://github.com/psenger/react-static-config-loader#readme",
   "main": "dist/index.js",
@@ -64,8 +67,9 @@
     "npm-run-all": "^4.1.5",
     "prettier": "^2.0.4",
     "react": "^16.13.1",
-    "react-dom": "^16.13.1",
+    "react-dom": "^16.14.0",
     "react-scripts": "^3.4.1",
+    "react-test-renderer": "^16.14.0",
     "rimraf": "^2.6.3"
   },
   "files": [

@@ -23,7 +23,10 @@ export const Consumer = Context.Consumer
 
 const useComponentDidMount = (onMountHandler) => {
   useEffect(() => {
-    onMountHandler()
+    async function asyncOnMountHandler() {
+      await onMountHandler()
+    }
+    asyncOnMountHandler()
   }, [])
 }
 
@@ -84,8 +87,8 @@ export class ConfigPropExtenderHoc extends React.Component {
  * @param {JSX.Element} [props.children=null] - All the JSX children, or null. the default value
  * is null.
  * @param {loaderCall} props.loader - Required function that will "load" the static
- * configuration, it is
- * assumed the call will return a Promise, that can include a value of rejection.
+ * configuration returning a promise. It is assumed the function will return a Promise, that can
+ * resolve a value or a proper rejection.
  * @param {JSX.Element} [props.loadingMsg=null] - The optional JSX that will be displayed while the
  * loader is running.
  * @return {JSX.Element}
@@ -128,7 +131,6 @@ export const StaticConfigWrapper = ({ children, loader, loadingMsg }) => {
       setIsLoading(true)
       const data = await loader()
       setConfig(data)
-    } catch (e) {
     } finally {
       setIsLoading(false)
     }

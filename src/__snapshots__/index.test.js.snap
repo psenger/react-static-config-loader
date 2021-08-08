@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`StaticConfigWrapper Should inject the config in the properties via a hoc 1`] = `
+Array [
+  <code>
+    {
+    "msg": "go",
+    "version": 1234,
+    "selection": [
+        "no",
+        "yes"
+    ],
+    "buttonName": "go go button"
+}
+  </code>,
+  <div>
+    hello
+  </div>,
+]
+`;
+
+exports[`StaticConfigWrapper Should resolve children with context 1`] = `
+<code>
+  {
+    "msg": "go",
+    "version": 1234,
+    "selection": [
+        "no",
+        "yes"
+    ],
+    "buttonName": "go go button"
+}
+</code>
+`;
+
+exports[`StaticConfigWrapper Should show the custom loading msg 1`] = `
+<div>
+  🥱Loading🥱
+</div>
+`;
+
+exports[`StaticConfigWrapper Should show the default loading msg (null) 1`] = `null`;
