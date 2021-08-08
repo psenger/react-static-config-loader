@@ -77,8 +77,7 @@ const App = () => {
 export default App
 ```
 
-Reference JavaScript
-----
+**Reference JavaScript**
 
 ```JavaScript
 const later = (delay, fnLater) => Promise.resolve()
