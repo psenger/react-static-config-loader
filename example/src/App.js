@@ -1,30 +1,44 @@
-import React from 'react';
-import { StaticConfigWrapper, Context } from '@psenger/react-static-config-loader';
+import React from "react";
+import { ConfigPropExtenderHoc, StaticConfigWrapper } from "@psenger/react-static-config-loader";
 
-export class ExampleClass extends React.Component {
-  static contextType = Context;
-  render() {
-    const {someValue} = this.props;
-    const config = this.context;
-    return <React.Fragment>
-      <code>{JSON.stringify(config,null,4)}</code>
-      <div>{someValue}</div>
-    </React.Fragment>
-  }
+const PureFunction = ({ config, someValue }) => <React.Fragment>
+  <code>{JSON.stringify(config, null, 4)}</code>
+  <div>{someValue}</div>
+</React.Fragment>
+
+const HOC = ({someValue}) => {
+  return (
+    <ConfigPropExtenderHoc>
+      <PureFunction someValue={someValue} />
+    </ConfigPropExtenderHoc>
+  );
 }
 
-const later = async function later(delay, fnLater) {
-  return new Promise(function(resolve) {
-    setTimeout(resolve, delay);
-  }).then(fnLater);
-}
+const later = (delay, fnLater) => Promise.resolve()
+  .then(()=>{
+    let id;
+    return new Promise(function(resolve) {
+        if (id) { // this is PURELY a safety precaution
+          clearTimeout(id);
+          id = undefined;
+        }
+        id = setTimeout(resolve, delay);
+      })
+      .then(() => {
+        // We need to cut down the possibility of a memory leak. It is
+        // assumed some one will copy-cut-and paste this code, and do
+        // something really bad. :grin:
+        clearTimeout(id);
+      })
+  })
+  .then(fnLater)
 
 const App = () => {
   const fn = ()=> Promise.resolve({msg:'go',version:1234,selection:['no','yes'], buttonName:'go go button'})
   return (
     <React.Fragment>
-      <StaticConfigWrapper loader={async () => later(2000, fn)} loadingMsg={()=><div>Loading</div>}>
-        <ExampleClass someValue={'You made it in ExampleClass'}/>
+      <StaticConfigWrapper loader={ later(2000, fn) } loadingMsg={<div>Loading</div>}>
+        <HOC someValue={'You made it in ExampleClass'}/>
       </StaticConfigWrapper>
     </React.Fragment>
   )
