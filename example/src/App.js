@@ -37,7 +37,7 @@ const App = () => {
   const fn = ()=> Promise.resolve({msg:'go',version:1234,selection:['no','yes'], buttonName:'go go button'})
   return (
     <React.Fragment>
-      <StaticConfigWrapper loader={ later(2000, fn) } loadingMsg={<div>Loading</div>}>
+      <StaticConfigWrapper loader={ () => later(2000, fn) } loadingMsg={<div>Loading</div>}>
         <HOC someValue={'You made it in ExampleClass'}/>
       </StaticConfigWrapper>
     </React.Fragment>

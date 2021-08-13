@@ -11,9 +11,7 @@
   "bugs": {
     "url": "https://github.com/psenger/react-static-config-loader/issues"
   },
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com"
-  },
+  "private": false,
   "homepage": "https://github.com/psenger/react-static-config-loader#readme",
   "main": "dist/index.js",
   "module": "dist/index.modern.js",
@@ -78,5 +76,8 @@
   "engineStrict": true,
   "engines": {
     "node": ">=15"
+  },
+  "dependencies": {
+    "prop-types": "^15.7.2"
   }
 }

@@ -1,4 +1,5 @@
 import React, { createContext, useEffect, useState } from 'react'
+import PropTypes from 'prop-types'
 
 /**
  * Context
@@ -39,6 +40,8 @@ const useComponentDidMount = (onMountHandler) => {
  *
  * @param {JSX} [children] - Optional JSX Children, keep in mind this only attaches the property
  * to all the first level children ( shallow )
+ * @param {String} [propName='config'] - Optionally you can specify a Property to store the
+ * config on, the default is 'config'
  * @return {JSX}
  * @example
  * import React from 'react'
@@ -64,8 +67,20 @@ const useComponentDidMount = (onMountHandler) => {
 export class ConfigPropExtenderHoc extends React.Component {
   static contextType = Context
   render() {
-    return React.cloneElement(this.props.children, { config: this.context })
+    const propName = this.props?.propName || 'config'
+    return React.cloneElement(this.props.children, {
+      [propName]: this.context
+    })
   }
+}
+
+ConfigPropExtenderHoc.propTypes = {
+  children: PropTypes.element.isRequired,
+  propName: PropTypes.string
+}
+
+ConfigPropExtenderHoc.defaultProps = {
+  propName: 'config'
 }
 
 /**
@@ -142,4 +157,10 @@ export const StaticConfigWrapper = ({ children, loader, loadingMsg }) => {
       </Provider>
     </React.Fragment>
   )
+}
+
+StaticConfigWrapper.propTypes = {
+  children: PropTypes.element,
+  loader: PropTypes.func.isRequired,
+  loadingMsg: PropTypes.element
 }
