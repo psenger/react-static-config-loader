@@ -2,6 +2,7 @@ function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'defau
 
 var React = require('react');
 var React__default = _interopDefault(React);
+var PropTypes = _interopDefault(require('prop-types'));
 
 function _inheritsLoose(subClass, superClass) {
   subClass.prototype = Object.create(superClass.prototype);
@@ -66,14 +67,22 @@ var ConfigPropExtenderHoc = /*#__PURE__*/function (_React$Component) {
   var _proto = ConfigPropExtenderHoc.prototype;
 
   _proto.render = function render() {
-    return React__default.cloneElement(this.props.children, {
-      config: this.context
-    });
+    var _this$props, _React$cloneElement;
+
+    var propName = ((_this$props = this.props) === null || _this$props === void 0 ? void 0 : _this$props.propName) || 'config';
+    return React__default.cloneElement(this.props.children, (_React$cloneElement = {}, _React$cloneElement[propName] = this.context, _React$cloneElement));
   };
 
   return ConfigPropExtenderHoc;
 }(React__default.Component);
 ConfigPropExtenderHoc.contextType = Context;
+ConfigPropExtenderHoc.propTypes = {
+  children: PropTypes.element.isRequired,
+  propName: PropTypes.string
+};
+ConfigPropExtenderHoc.defaultProps = {
+  propName: 'config'
+};
 var StaticConfigWrapper = function StaticConfigWrapper(_ref) {
   var children = _ref.children,
       loader = _ref.loader,
@@ -110,6 +119,11 @@ var StaticConfigWrapper = function StaticConfigWrapper(_ref) {
   }, /*#__PURE__*/React__default.createElement(Consumer, null, function (config) {
     return isLoading ? loadingMsg : children;
   })));
+};
+StaticConfigWrapper.propTypes = {
+  children: PropTypes.element,
+  loader: PropTypes.func.isRequired,
+  loadingMsg: PropTypes.element
 };
 
 exports.ConfigPropExtenderHoc = ConfigPropExtenderHoc;

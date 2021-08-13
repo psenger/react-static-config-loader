@@ -201,6 +201,8 @@ values as properties.
 
 *   `children` **JSX?** Optional JSX Children, keep in mind this only attaches the property
     to all the first level children ( shallow )
+*   `propName` **[String][4]** Optionally you can specify a Property to store the
+    config on, the default is 'config' (optional, default `'config'`)
 
 #### Examples
 
@@ -233,25 +235,25 @@ Returns **JSX**
 Callback responsible for fetching the external configuration. Because it is a promise, the
 user can add a 'then' or even use async/await to transform the payload.
 
-Type: [Function][4]
+Type: [Function][5]
 
-Returns **[Promise][5]\<any>** 
+Returns **[Promise][6]\<any>** 
 
 ### StaticConfigWrapper
 
 StaticConfigWrapper - is everything wrapped up in one JSX tag. I
 expect this will satisfy the majority of scenarios. However, for those that
-it does not, the [Provider][6], [Consumer][7], and [Context][8] are all broken out. If you
+it does not, the [Provider][7], [Consumer][8], and [Context][9] are all broken out. If you
 find you really need them, this might not be a good solution for your project.
-[redux Action object][9]
+[redux Action object][10]
 
 #### Parameters
 
-*   `props` **[Object][10]?** props the JSX props.
+*   `props` **[Object][11]?** props the JSX props.
 
     *   `props.children` **JSX.Element** All the JSX children, or null. the default value
         is null. (optional, default `null`)
-    *   `props.loader` **[loaderCall][11]** Required function that will "load" the static
+    *   `props.loader` **[loaderCall][12]** Required function that will "load" the static
         configuration returning a promise. It is assumed the function will return a Promise, that can
         resolve a value or a proper rejection.
     *   `props.loadingMsg` **JSX.Element** The optional JSX that will be displayed while the
@@ -299,21 +301,23 @@ Returns **JSX.Element**
 
 [3]: https://reactjs.org/docs/context.html#contextprovider
 
-[4]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function
+[4]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String
 
-[5]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise
+[5]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function
 
-[6]: #Provider
+[6]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise
 
-[7]: #Consumer
+[7]: #Provider
 
-[8]: #Context
+[8]: #Consumer
 
-[9]: http://redux.js.org/docs/basics/Actions.html
+[9]: #Context
 
-[10]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object
+[10]: http://redux.js.org/docs/basics/Actions.html
 
-[11]: #loadercall
+[11]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object
+
+[12]: #loadercall
 
 
 <!--START_SECTION:file:CONTRIBUTING.md-->
@@ -338,10 +342,14 @@ react-static-config-loader fruitful.
 
 ## Deployment Steps
 
+These are notes for deploying to NPM. I used `npmrc` to manage my NPM identities
+(`npm i npmrc -g` to install ). Then I created a new profile called `public` with
+(`npmrc -c public`) and then switch to it with `npmrc public`.
+
 * create a pull request from `dev` to `main`
 * check out `main`
 * `npm version patch -m "message here" or minor`
-* `npm publish`
+* `npm publish --access public`
 * Then switch to `dev` branch
 * And then merge `main` into `dev` and push `dev` to origin
 
