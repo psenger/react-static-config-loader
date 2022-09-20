@@ -1,6 +1,6 @@
 {
   "name": "@psenger/react-static-config-loader",
-  "version": "1.0.3",
+  "version": "1.0.5",
   "description": "React Static Config Loader, a convenience tag providing a widely used pattern of loading a static configuration from a server and using ReactJS Context, providing the cofnig to the context of components within the hiearchy in a clean and consistent manner.",
   "author": "Philip A Senger <philip.a.senger@cngrgroup.com>",
   "license": "MIT",
@@ -23,7 +23,7 @@
     "provider"
   ],
   "scripts": {
-    "build": "microbundle-crl --no-compress --format modern,cjs",
+    "build": "microbundle-crl --no-compress --format modern,cjs && cp ./src/index.d.ts ./dist/",
     "start": "microbundle-crl watch --no-compress --format modern,cjs",
     "prepare": "run-s build",
     "docs": "npm run docs:readme && npm run docs:html",
@@ -66,7 +66,7 @@
     "prettier": "^2.0.4",
     "react": "^16.13.1",
     "react-dom": "^16.14.0",
-    "react-scripts": "^3.4.1",
+    "react-scripts": "^5.0.1",
     "react-test-renderer": "^16.14.0",
     "rimraf": "^2.6.3"
   },
@@ -77,6 +77,7 @@
   "engines": {
     "node": ">=15"
   },
+  "types": "./dist/index.d.ts",
   "dependencies": {
     "prop-types": "^15.7.2"
   }
