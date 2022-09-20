@@ -23,7 +23,7 @@
     "provider"
   ],
   "scripts": {
-    "build": "microbundle-crl --no-compress --format modern,cjs",
+    "build": "microbundle-crl --no-compress --format modern,cjs && cp ./src/index.d.ts ./dist/",
     "start": "microbundle-crl watch --no-compress --format modern,cjs",
     "prepare": "run-s build",
     "docs": "npm run docs:readme && npm run docs:html",
@@ -77,6 +77,7 @@
   "engines": {
     "node": ">=15"
   },
+  "types": "./dist/index.d.ts",
   "dependencies": {
     "prop-types": "^15.7.2"
   }
